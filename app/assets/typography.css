@@ -1,0 +1,25 @@
+:root {
+    --font-family-brand: 'Inter', sans-serif;
+    --font-family-body: 'Inter', sans-serif;
+    --font-family-mono: 'Fira Code', monospace;
+
+    --font-display-large: 3rem;
+    --font-display-medium: 2.25rem;
+    --font-display-small: 1.5rem;
+
+    --font-headline-large: 1.25rem;
+    --font-headline-medium: 1rem;
+    --font-headline-small: 0.875rem;
+
+    --font-title-large: 0.875rem;
+    --font-title-medium: 0.75rem;
+    --font-title-small: 0.625rem;
+
+    --font-body-large: 1rem;
+    --font-body-medium: 0.875rem;
+    --font-body-small: 0.75rem;
+
+    --font-label-large: 0.75rem;
+    --font-label-medium: 0.625rem;
+    --font-label-small: 0.5rem;
+}
