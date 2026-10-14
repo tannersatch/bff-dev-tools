@@ -1,28 +1,54 @@
 <script setup lang="ts">
 import type { NavigationMenuItem } from "@nuxt/ui";
 
+const avatar = {
+  src: "https://github.com/benjamincanac.png",
+  loading: "lazy" as const,
+};
+
 const items: NavigationMenuItem[][] = [[{
   label: "Home",
   icon: "i-lucide-house",
-  active: true,
+  to: "/",
 }, {
-  label: "Inbox",
-  icon: "i-lucide-inbox",
+  label: "About",
+  icon: "i-lucide-info",
   badge: "4",
+  to: "/about",
 }, {
-  label: "Contacts",
-  icon: "i-lucide-users",
-}, {
-  label: "Settings",
-  icon: "i-lucide-settings",
+  label: "Portfolio",
+  icon: "i-lucide-gallery-vertical-end",
   defaultOpen: true,
-  children: [{
-    label: "General",
-  }, {
-    label: "Members",
-  }, {
-    label: "Notifications",
-  }],
+  children: [
+    {
+      label: "Roman Numeral Calculator",
+      icon: "i-lucide-calculator",
+      to: "/portfolio/roman-numerals",
+    },
+    {
+      label: "FileShadow, Inc.",
+      icon: "i-lucide-file",
+      to: "https://portal.fileshadow.com",
+      target: "_blank",
+    },
+    {
+      label: "Glow Permanent Lighting",
+      icon: "i-lucide-lightbulb",
+      to: "https://www.glowpermanentlights.com/",
+      target: "_blank",
+    },
+  ],
+}, {
+  label: "Dev Tools",
+  icon: "i-lucide-code",
+  defaultOpen: true,
+  children: [
+    {
+      label: "JWT Decoder",
+      icon: "i-lucide-braces",
+      to: "/tools/jwt-decode",
+    },
+  ],
 }], [{
   label: "Feedback",
   icon: "i-lucide-message-circle",
@@ -38,20 +64,93 @@ const items: NavigationMenuItem[][] = [[{
 
 <template>
   <UDashboardSidebar
-    class="min-h-0 min-w-0 overflow-hidden"
-    resizable
     collapsible
-    :min-size="22"
-    :default-size="35"
-    :max-size="40"
-    :collapsed-size="0"
+    resizable
+    :ui="{ footer: 'sidebar-footer' }"
   >
+    <template #header="{ collapsed }">
+      <Logo v-if="!collapsed" class="sidebar-logo" />
+      <UIcon
+        v-else
+        name="i-simple-icons-nuxtdotjs"
+        class="sidebar-icon"
+      />
+    </template>
+
     <template #default="{ collapsed }">
+      <UButton
+        :label="collapsed ? undefined : 'Search...'"
+        icon="i-lucide-search"
+        color="neutral"
+        variant="outline"
+        block
+        :square="collapsed"
+      >
+        <template v-if="!collapsed" #trailing>
+          <div class="search-shortcut">
+            <UKbd value="meta" variant="subtle" />
+            <UKbd value="K" variant="subtle" />
+          </div>
+        </template>
+      </UButton>
+
       <UNavigationMenu
         :collapsed="collapsed"
         :items="items[0]"
         orientation="vertical"
       />
+
+      <UNavigationMenu
+        :collapsed="collapsed"
+        :items="items[1]"
+        orientation="vertical"
+        class="secondary-navigation"
+      />
+    </template>
+
+    <template #footer="{ collapsed }">
+      <UButton
+        :avatar="avatar"
+        :label="collapsed ? undefined : 'Benjamin'"
+        color="neutral"
+        variant="ghost"
+        class="profile-button"
+        :block="collapsed"
+      />
     </template>
   </UDashboardSidebar>
 </template>
+
+<style scoped>
+.sidebar-logo {
+  height: 1.25rem;
+  width: auto;
+  flex-shrink: 0;
+}
+
+.sidebar-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+  color: var(--ui-primary);
+  margin-inline: auto;
+}
+
+.search-shortcut {
+  display: flex;
+  align-items: center;
+  gap: 0.125rem;
+  margin-inline-start: auto;
+}
+
+.secondary-navigation {
+  margin-top: auto;
+}
+
+.profile-button {
+  width: 100%;
+}
+
+:deep(.sidebar-footer) {
+  border-top: 1px solid var(--ui-border);
+}
+</style>
