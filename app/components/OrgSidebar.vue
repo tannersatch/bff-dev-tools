@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { NavigationMenuItem } from "@nuxt/ui";
+import OrgIcon from "./OrgIcon.vue";
 
 const avatar = {
   src: "https://github.com/benjamincanac.png",
@@ -69,10 +70,9 @@ const items: NavigationMenuItem[][] = [[{
     :ui="{ footer: 'sidebar-footer' }"
   >
     <template #header="{ collapsed }">
-      <Logo v-if="!collapsed" class="sidebar-logo" />
-      <UIcon
-        v-else
-        name="i-simple-icons-nuxtdotjs"
+      <OrgIcon
+        name="silhouette"
+        size="lg"
         class="sidebar-icon"
       />
     </template>
@@ -129,9 +129,9 @@ const items: NavigationMenuItem[][] = [[{
 }
 
 .sidebar-icon {
-  width: 1.25rem;
-  height: 1.25rem;
-  color: var(--ui-primary);
+  width: 3rem;
+  height: 3rem;
+  color: var(--ui-foreground);
   margin-inline: auto;
 }
 
