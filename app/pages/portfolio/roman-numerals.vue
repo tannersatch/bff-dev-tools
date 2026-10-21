@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { FormSubmitEvent } from "@nuxt/ui";
+import type { FormSubmitEvent } from "@nuxt/ui";
 import * as z from "zod";
 
 definePageMeta({
