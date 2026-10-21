@@ -1,16 +1,49 @@
+<script setup lang="ts">
+import type { NavigationMenuItem } from "@nuxt/ui";
+import OrgIcon from "./OrgIcon.vue";
+
+const route = useRoute();
+
+const items = computed<NavigationMenuItem[]>(() => [
+  {
+    label: "Home",
+    to: "/",
+    active: route.path === "/",
+  },
+  {
+    label: "About",
+    to: "/about",
+    active: route.path === "/about",
+  },
+  {
+    label: "Dev Tools",
+    to: "/tools",
+    active: route.path === "/tools",
+  },
+]);
+</script>
+
 <template>
   <UHeader>
-    <slot name="header">
-      <nav>
-        <UButton @click="navigateTo('/')">Home</UButton>
-        <UButton @click="navigateTo('/about')">About</UButton>
-      </nav>
-    </slot>
+    <template #title>
+      <OrgIcon />
+    </template>
+
+    <UNavigationMenu :items="items" />
+
     <template #right>
-      <UTooltip text="Expand or collapse sidebar">
-        <UDashboardSidebarCollapse />
+      <UColorModeButton />
+
+      <UTooltip text="Open on GitHub" :kbds="['meta', 'G']">
+        <UButton
+          color="neutral"
+          variant="ghost"
+          to="https://github.com/nuxt/ui"
+          target="_blank"
+          icon="i-simple-icons-github"
+          aria-label="GitHub"
+        />
       </UTooltip>
-      <UDashboardSidebarToggle />
     </template>
   </UHeader>
 </template>

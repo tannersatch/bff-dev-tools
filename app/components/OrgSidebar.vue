@@ -143,7 +143,8 @@ const items: NavigationMenuItem[][] = [[{
 }
 
 .secondary-navigation {
-  margin-top: auto;
+  background: red;
+  margin-top: auto !important;
 }
 
 .profile-button {
