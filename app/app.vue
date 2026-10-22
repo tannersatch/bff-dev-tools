@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import OrgHeader from "./components/OrgHeader.vue";
+import BFFHeader from "./components/BFFHeader.vue";
 </script>
 
 <template>
@@ -10,13 +10,11 @@ import OrgHeader from "./components/OrgHeader.vue";
       color="warning"
     />
 
-    <OrgHeader />
+    <BFFHeader />
 
-    <UMain>
-      <NuxtLayout>
-        <NuxtPage />
-      </NuxtLayout>
-    </UMain>
+    <NuxtLayout>
+      <NuxtPage />
+    </NuxtLayout>
 
     <UFooter />
   </UApp>

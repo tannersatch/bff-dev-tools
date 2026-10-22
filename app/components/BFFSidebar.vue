@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { NavigationMenuItem } from "@nuxt/ui";
-import OrgIcon from "./OrgIcon.vue";
+import BFFIcon from "./BFFIcon.vue";
 
 const avatar = {
   src: "https://github.com/benjamincanac.png",
@@ -67,16 +67,8 @@ const items: NavigationMenuItem[][] = [[{
   <UDashboardSidebar
     collapsible
     resizable
-    :ui="{ footer: 'sidebar-footer' }"
+    :ui="{ root: 'min-h-0', footer: 'sidebar-footer' }"
   >
-    <template #header="{ collapsed }">
-      <OrgIcon
-        name="silhouette"
-        size="lg"
-        class="sidebar-icon"
-      />
-    </template>
-
     <template #default="{ collapsed }">
       <UButton
         :label="collapsed ? undefined : 'Search...'"
@@ -122,19 +114,6 @@ const items: NavigationMenuItem[][] = [[{
 </template>
 
 <style scoped>
-.sidebar-logo {
-  height: 1.25rem;
-  width: auto;
-  flex-shrink: 0;
-}
-
-.sidebar-icon {
-  width: 3rem;
-  height: 3rem;
-  color: var(--ui-foreground);
-  margin-inline: auto;
-}
-
 .search-shortcut {
   display: flex;
   align-items: center;

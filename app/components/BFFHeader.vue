@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { NavigationMenuItem } from "@nuxt/ui";
-import OrgIcon from "./OrgIcon.vue";
+import BFFBanner from "./BFFBanner.vue";
 
 const route = useRoute();
 
@@ -26,23 +26,14 @@ const items = computed<NavigationMenuItem[]>(() => [
 <template>
   <UHeader>
     <template #title>
-      <OrgIcon />
+      <BFFBanner />
     </template>
 
     <UNavigationMenu :items="items" />
 
     <template #right>
-      <UColorModeButton />
-
-      <UTooltip text="Open on GitHub" :kbds="['meta', 'G']">
-        <UButton
-          color="neutral"
-          variant="ghost"
-          to="https://github.com/nuxt/ui"
-          target="_blank"
-          icon="i-simple-icons-github"
-          aria-label="GitHub"
-        />
+      <UTooltip text="Toggle site theme">
+        <UColorModeButton />
       </UTooltip>
     </template>
   </UHeader>

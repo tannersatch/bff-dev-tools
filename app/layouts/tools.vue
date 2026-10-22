@@ -1,45 +1,25 @@
 <script setup lang="ts">
-import OrgHeader from "~/components/OrgHeader.vue";
-import OrgSidebar from "~/components/OrgSidebar.vue";
-
-const changeTheme = (theme: string) => {
-  document.documentElement.setAttribute("data-theme", theme);
-};
+import BFFSidebar from "~/components/BFFSidebar.vue";
 </script>
 
 <template>
-  <UDashboardGroup>
-    <OrgSidebar />
-    <div class="layout-content">
-      <!-- <OrgHeader /> -->
-      <UMain class="main-content">
-        <slot />
-      </UMain>
-      <UFooter class="layout-footer">
-        <slot name="footer" />
-      </UFooter>
-    </div>
+  <UDashboardGroup class="dashboard">
+    <BFFSidebar />
+    <UPage class="page">
+      <slot />
+    </UPage>
   </UDashboardGroup>
 </template>
 
 <style scoped>
-.layout-content {
+.dashboard {
+  top: 112px;
+  max-height: calc(100vh - 112px);
+}
+.page {
   display: flex;
-  flex: 1 1 0%;
-  flex-direction: column;
-  min-height: 0;
-  min-width: 0;
-}
-
-.layout-header,
-.layout-footer {
-  flex-shrink: 0;
-}
-
-.main-content {
-  flex: 1 1 0%;
-  min-height: 0;
-  overflow-y: auto;
   padding: 1rem;
+  max-height: calc(100vh - 112px);
+  overflow-y: auto;
 }
 </style>

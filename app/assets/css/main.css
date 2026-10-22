@@ -7,6 +7,10 @@
 
 :root {
   --ui-radius: 0.75rem;
+  --breakpoint-lg: 1024px;
+  --breakpoint-md: 768px;
+  --breakpoint-sm: 640px;
+  --breakpoint-xs: 480px;
 }
 
 :root, .light {
